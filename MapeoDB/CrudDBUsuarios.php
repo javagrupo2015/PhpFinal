@@ -1,9 +1,8 @@
 <?php 
     
-    include('config.php') ;
-    include('dto/DtoUsuario.php') ;
+    include('..\config.php') ;
+    include('..\dto\DtoUsuario.php') ;
 
-    //echo "se realizo exitosamente la conexion a la base de datos"; 
     class CRUDusuario 
      { 
         function  AgregarUsuario($dtoUsuarioGuardar){
@@ -19,6 +18,7 @@
                 echo "No guardo nada"  ; 
             }
         }   
+
     }
     
     $dtoUsuarios = new dtoUsuario; 
