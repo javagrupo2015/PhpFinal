@@ -55,9 +55,7 @@
             $dtoUsuarios = new dtoUsuario;
             $i= 0; 
             if($ejecutar){
-                
                 while ($fila = mysqli_fetch_array($ejecutar)){
-                   
                    $dtoUsuarios->IdUsuario = $fila["IdUsuario"];
                    $dtoUsuarios->NombreCompleto = $fila["NombreCompleto"];
                    $dtoUsuarios->Apellido = $fila["Apellido"];
@@ -65,8 +63,6 @@
                    $dtoUsuarios->Contrasena = $fila["contrasena"];
                    $dtoUsuarios->IdTipoCargo = $fila["IdTipoCargo"];                   
                    $i= $i+1; 
-                
-                   echo   $dtoUsuarios->IdUsuario; 
                 }
             } 
             else {
@@ -75,24 +71,9 @@
            return $dtoUsuarios ;   
         }
     }
-    /*
-    $dtoUsuarios = new dtoUsuario; 
-    $dtoUsuarios->NombreCompleto = "Correcion DAvid "; 
-    $dtoUsuarios->Apellido = "Cortes Muñoz "; 
-    $dtoUsuarios->usuario = "NDJKANADNKDJ"; 
-    $dtoUsuarios->Contrasena = "123"; 
-    $dtoUsuarios->IdTipoCargo = 1 ;
-    $dtoUsuarios ->IdUsuario =  33;
-    
-
-    echo  $dtoUsuarios->usuario; 
-    
-    $clase = new CRUDusuario; 
-    $clase -> DeleteUsuario($dtoUsuarios->IdUsuario); 
-*/
+   
 $clase = new CRUDusuario; 
 $resultado = $clase -> getByID(1);
-
 echo $resultado->NombreCompleto
 
 ?> 
