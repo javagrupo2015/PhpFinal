@@ -5,9 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style type="text/css">
+      #menu{margin:0;padding:0;}
+      #menu li{float:left;margin:0 24px;position:relative;list-style:none;background:#D9D9D9;}
+      #menu li a{padding:6px 8px;}
+      #menu li ul{display:none;width:200px;margin:0;padding:0;position:absolute;}
+      #menu li:hover ul,#menu li ul:hover{display:block;}
+      #menu li:hover{background:#40ECEE;}
+      </style>
+
 </head>
 <body>
+    <h1>Bienvenido al sistema de decuentos</h1>
     
-    <h1> Hola, bienvenido fabian</h1>
+    <ul id="menu">
+        <li><a href="#">Usuarios</a>
+            <ul>
+                <li><a href="#">Crear Usuario</a></li>
+                <li><a href="#">Eliminar Usuario</a></li>
+                <li><a href="#">Modificar Usuario</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Modificar Nomina</a>
+        
+        </li>
+        <li><a href="#">Calcular Nomina</a></li>
+     </ul>
+     
 </body>
+
+
 </html>
+

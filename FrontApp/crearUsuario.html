@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+    .center {
+    margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;
+    }
+    </style>
+</head>
+<body>
+
+   <form action="LogicaNegocio/validarUsuario.php" method="post" class="Fondo" >
+
+    <h1>Creacion de usuarios:</h1>
+    <div class="center">
+        <h3>Nombres:</h3>
+        <input type="text" name="Nombre Completo" id="name">
+
+        <h3>Apellidos:</h3>
+        <input type="text" name="Apellidos" id="lastname">
+
+        <h3>User:</h3>
+        <input type="text" name="Usuario" id="user">
+
+        <h3>Contraseña:</h3>
+        <input type="password" name="Contraseña" id="password">
+        
+        <h3>Id Tipo Cargo:</h3>
+      
+        <SELECT NAME="selCombo" SIZE=1> 
+                <OPTION VALUE="1">Ingeniero</OPTION>
+                <OPTION VALUE="2">Doctor</OPTION>
+                <OPTION VALUE="3">Profesor</OPTION>
+                <OPTION VALUE="4">Operario</OPTION> 
+         </SELECT>
+         <br> 
+         <br>
+         <br>    
+       
+         <input type="submit" value="Crear Usuario" name="UsuarioLogi" alling ="center">  
+    </div>
+
+   </form>
+
+</body>
+</html>
+
+
