@@ -1,38 +1,43 @@
 <?php
 
-include('..\config.php') ;
+
+
+include('..\MapeoDB\CrudDBUsuarios.php') ; 
 
 
 if(isset($_POST['UsuarioLogi'])) {
+   
+    $mapeo = new CRUDusuario; 
     $usuario = $_POST["fuser"];
     $pass = $_POST["fpass"];
-  
-    
-    echo $usuario;
-    echo $pass; 
+    $mapeo->getByUserAndPassword($pass,$usuario );
+   // echo $usuario;
+   // echo $pass; 
    
     $id= 0; 
+}
+else {
+    if(isset($_POST['CrearUsuario'])) {
+      
+        $mapeo = new CRUDusuario; 
 
-    if ($usuario != null && $pass != null){
-        $conec =conectar(); 
+        $dtoUsuarios= new dtoUsuario(); 
+        $dtoUsuarios->NombreCompleto = $_POST["name"];
+        $dtoUsuarios->Apellido = $_POST["lastname"];
+        $dtoUsuarios->Usuario = $_POST["user"];
+        $dtoUsuarios->Contrasena = $_POST["password"];
+        $dtoUsuarios->IdTipoCargo = $_POST["selCombo"];
+        $userResult  = $mapeo->agregarUsuario($dtoUsuarios);
+        echo "<script>if(alert('Usuario creado con exito?')){ 
+                document.location='../FrontApp/bienvenido.html';} 
+                </script>"; 
+         header('Location: ../FrontApp/bienvenido.html');       
 
-        $consulta = "SELECT IdUsuario,user, contrasena FROM usuario  WHERE user ='$usuario' AND contrasena = '$pass'"; 
-        $ejecutar =mysqli_query($conec ,$consulta);
+            
+      
+
+        //$registro = new CRUDusuario;
+       // $resultado = $registro -> agregarUsuario($clase);
     }
-
-        while ($fila = mysqli_fetch_array($ejecutar)){
-        $id = $fila["IdUsuario"];
-        $UsuarioLogin = $fila["user"];
-        $PasswordLogin = $fila["contrasena"];
-    
-        }
-    if($id != null && $id != 0){
-      header('Location: ../FrontApp/bienvenido.html');
-    }
-    else {
-     header('Location: ../index.html');
-      echo "Contraseña Incorrecta"; 
-    }
-
 }
 ?>

@@ -8,16 +8,20 @@
         function  agregarUsuario($dtoUsuarioGuardar){
             $conec =conectar();  
             $sql = "CALL InsertUsuario('$dtoUsuarioGuardar->NombreCompleto','$dtoUsuarioGuardar->Apellido',
-                    '$dtoUsuarioGuardar->usuario','$dtoUsuarioGuardar->Contrasena'
+                    '$dtoUsuarioGuardar->Usuario','$dtoUsuarioGuardar->Contrasena'
                     ,$dtoUsuarioGuardar->IdTipoCargo )" ; 
             $ejecutar =mysqli_query($conec ,$sql); 
             
             if($ejecutar){
                     echo"bien Guardado"; 
-                     }
+                    return $dtoUsuarioGuardar;
+            }
             else {
                 echo "No guardo nada"  ; 
+                return null ;  
             }
+
+           
         }
         
         function updateUsuario($dtoUsuarioGuardar){
@@ -70,19 +74,31 @@
             } 
            return $dtoUsuarios ;   
         }
+        function getByUserAndPassword($password, $name){
+          
+            if ($name != null && $password != null){
+                $conec =conectar(); 
+                echo $name ;
+                echo $password;
+               
+             $ejecutar =  mysqli_query($conec,"Select IdUsuario,user,contrasena from usuario where user=  '$name' AND contrasena =   '$password'") or die(mysqli_error($conec));
+                if($ejecutar){
+                    while ($fila = mysqli_fetch_array($ejecutar)){
+                       $id = $fila["IdUsuario"];
+                       $UsuarioLogin = $fila["user"];
+                        $PasswordLogin = $fila["contrasena"];
+                       
+                    }
+                }   
+                if($id != null && $id != 0){
+                            header('Location: ../FrontApp/bienvenido.html');
+                }
+                else {
+                          header('Location: ../index.html');
+                          echo "Contraseña Incorrecta"; 
+                }
+            }
+        } 
     }
    
-$clase = new CRUDusuario; 
-
-
-$clase->IdUsuario = 1;
-$clase->NombreCompleto = "Chritian david ";
-$clase->Apellido = "Cortes Muñoz";
-$clase->usuario = "christianc";
-$clase->Contrasena = "123456";
-$clase->IdTipoCargo = 1;
-
-$resultado = $clase -> agregarUsuario($clase    );
-echo $resultado->NombreCompleto
-
 ?> 
